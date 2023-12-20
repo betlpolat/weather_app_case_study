@@ -29,7 +29,6 @@ final class ApplicationInitialize {
   /// project basic required initialize
   Future<void> make() async {
     WidgetsFlutterBinding.ensureInitialized();
-
     await runZonedGuarded<Future<void>>(
       _initialize,
       (error, stack) {
@@ -39,9 +38,10 @@ final class ApplicationInitialize {
   }
 
   /// This method is used to initialize the application process
-  static Future<void> _initialize() async {
+  Future<void> _initialize() async {
     await EasyLocalization.ensureInitialized();
     await AppCache.instance.setUp();
+
     EasyLocalization.logger.enableLevels = [LevelMessages.error];
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     FlutterError.onError = (details) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app_case_study/core/base/mixin/navigator_manager_mixin.dart';
 import 'package:weather_app_case_study/core/extension/context_extension.dart';
@@ -21,6 +22,8 @@ class _BottomBarViewState extends State<BottomBarView>
   @override
   void initState() {
     super.initState();
+    checkPermission(Permission.location);
+
     _tabController = TabController(length: TabViews.values.length, vsync: this);
   }
 
@@ -57,6 +60,17 @@ class _BottomBarViewState extends State<BottomBarView>
         ),
       ),
     );
+  }
+
+  Future<void> checkPermission(Permission permission) async {
+    final status = await permission.request();
+    if (status.isGranted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Permission is Granted")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Permission is not Granted")));
+    }
   }
 }
 
