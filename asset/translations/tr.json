@@ -1,0 +1,12 @@
+{
+  "home": {
+    "daily_forecast": "GÜNLÜK HAVA DURUMU",
+    "hourly_forecast": "SAATLİK HAVA DURUMU"
+  },
+  "settings": {
+    "unit_option": "Birim Tercihi"
+  },
+  "general": {
+    "title": "Şehir Seçin"
+  }
+}

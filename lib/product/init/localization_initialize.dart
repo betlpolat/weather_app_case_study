@@ -19,7 +19,6 @@ final class ProductLocalization extends EasyLocalization {
 
   static final List<Locale> _supportedItems = [
     Locales.tr.locale,
-    Locales.en.locale,
   ];
 
   static const String _translationPath = 'asset/translations';

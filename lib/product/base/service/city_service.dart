@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:weather_app_case_study/product/utility/constants/path_constants.dart';
 
 import '../model/cities.dart';
 
@@ -16,8 +17,7 @@ class CityService extends ICityService {
 
   @override
   Future<List<City>?> fetchCity() async {
-    final Response response =
-        await dio.get("https://turkiyeapi.dev/api/v1/provinces");
+    final Response response = await dio.get(PathConstants.cityUrl);
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;
       if (jsonBody is Map<String, dynamic>) {

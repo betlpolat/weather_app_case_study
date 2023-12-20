@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app_case_study/product/state/current_city_notifier.dart';
 
-import '../../../../core/base/network/network_manager.dart';
-import '../../../../product/base/model/weather.dart';
-import '../../../../product/base/service/weather_service.dart';
-import '../../../../product/state/heat_unit_notifier.dart';
-import '../home_view.dart';
+import '../../../core/base/network/network_manager.dart';
+import '../../../product/base/model/weather.dart';
+import '../../../product/base/service/weather_service.dart';
+import '../../../product/state/index.dart';
+import '../view/home_view.dart';
 
-mixin HomeMixin on State<HomeView> {
+mixin HomeViewModel on State<HomeView> {
   final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
 
   late Future<Weather?> weather;

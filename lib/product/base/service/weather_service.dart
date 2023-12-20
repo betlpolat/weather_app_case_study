@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:weather_app_case_study/core/base/network/network_manager.dart';
 import 'package:weather_app_case_study/product/base/model/weather.dart';
+import 'package:weather_app_case_study/product/utility/constants/path_constants.dart';
 import 'package:weather_app_case_study/product/utility/enum/heat_unit.dart';
 
 abstract class IWeatherService {
@@ -27,10 +28,10 @@ class WeatherService extends IWeatherService {
     final Response response;
     if (unit == HeatUnit.fahrenheit.symbol) {
       response = await dio.get(
-          "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&&temperature_unit=fahrenheit&&current=temperature_2m,weather_code&hourly=temperature_2m&daily=temperature_2m_max");
+          "${PathConstants.baseUrl}?latitude=$latitude&longitude=$longitude&&temperature_unit=fahrenheit&&${PathConstants.weatherUrl}");
     } else {
       response = await dio.get(
-          "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&&current=temperature_2m,weather_code&hourly=temperature_2m&daily=temperature_2m_max");
+          "${PathConstants.baseUrl}?latitude=$latitude&longitude=$longitude&&${PathConstants.weatherUrl}");
     }
 
     if (response.statusCode == HttpStatus.ok) {
